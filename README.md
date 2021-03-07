@@ -22,3 +22,27 @@
 ```
 
 <br/>
+
+## ✔ Text Inputs
+
+```js
+  <Text>Enter name:</Text>
+  <TextInput
+    multiline
+    style={styles.input}
+    placeholder="e.g. John Doe"
+    onChangeText={(val) => setName(val)}
+  />
+  <Text>Enter age:</Text>
+  <TextInput
+    keyboardType="numeric"
+    style={styles.input}
+    placeholder="e.g. 99"
+    onChangeText={(val) => setAge(val)}
+  />
+  <Text>
+    name: {name}, age: {age}
+  </Text>
+```
+
+<br/>
