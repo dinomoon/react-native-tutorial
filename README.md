@@ -46,3 +46,9 @@
 ```
 
 <br/>
+
+## ✔ Lists & ScrollView
+
+- Scroll이 가능하게 하기 위해서는 ScrollView로 감싸줘야한다.
+
+<br/>
