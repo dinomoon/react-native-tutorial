@@ -49,6 +49,35 @@
 
 ## ✔ Lists & ScrollView
 
-- Scroll이 가능하게 하기 위해서는 ScrollView로 감싸줘야한다.
+- Scroll이 가능하게 하기 위해서는 `ScrollView`로 감싸줘야한다.
+
+```jsx
+<ScrollView>
+  {people.map((item) => (
+    <View key={item.key}>
+      <Text style={styles.item}>{item.name}</Text>
+    </View>
+  ))}
+  ;
+</ScrollView>
+```
+
+<br/>
+
+## ✔ Flat List Component
+
+- `ScrollView`와 같은 기능을 함
+- 차이점: ScrollView는 화면이 나타날 때 모든 아이템을 렌더링하지만, FlatList는 유저가 화면을 스크롤할 때마다 렌더링한다. -> `FlatList`의 성능이 더 좋다. + less code
+- `View`에 key를 넘겨주는 것처럼 `keyExtractor`를 사용해 key를 넘겨주어야한다. (객체의 key이름을 key라고 하면 안써줘도 된다.)
+- `numColums`속성을 사용해 column의 수를 정할 수 있다.
+
+```jsx
+<FlatList
+  numColumns={2}
+  keyExtractor={(item) => item.id}
+  data={people}
+  renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
+/>
+```
 
 <br/>
