@@ -1,33 +1,42 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 
 export default function App() {
   const [people, setPeople] = useState([
-    { name: 'shaun1', key: '1' },
-    { name: 'shaun2', key: '2' },
-    { name: 'shaun3', key: '3' },
-    { name: 'shaun4', key: '4' },
-    { name: 'shaun5', key: '5' },
-    { name: 'shaun6', key: '6' },
-    { name: 'shaun7', key: '7' },
+    { name: 'shaun1', id: '1' },
+    { name: 'shaun2', id: '2' },
+    { name: 'shaun3', id: '3' },
+    { name: 'shaun4', id: '4' },
+    { name: 'shaun5', id: '5' },
+    { name: 'shaun6', id: '6' },
+    { name: 'shaun7', id: '7' },
   ]);
+
+  const pressHandler = (id) => {
+    console.log(id);
+    setPeople((prevPeople) => {
+      return prevPeople.filter((person) => person.id != id);
+    });
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
         numColumns={2}
-        keyExtractor={(item) => item.key}
+        keyExtractor={(item) => item.id}
         data={people}
-        renderItem={({ item }) => <Text style={styles.item}>{item.name}</Text>}
-      />
-      {/* <ScrollView>
-        {people.map((item) => (
-          <View key={item.key}>
+        renderItem={({ item }) => (
+          <TouchableOpacity onPress={() => pressHandler(item.id)}>
             <Text style={styles.item}>{item.name}</Text>
-          </View>
-        ))}
-        ;
-      </ScrollView> */}
+          </TouchableOpacity>
+        )}
+      />
     </View>
   );
 }

@@ -81,3 +81,27 @@
 ```
 
 <br/>
+
+## ✔ Touchable Components
+
+- `TouchableOpacity` 를 사용하면 touch이벤트를 발생시킬 수 있다.
+
+```jsx
+const pressHandler = (id) => {
+  console.log(id);
+  setPeople((prevPeople) => {
+    return prevPeople.filter((person) => person.id != id);
+  });
+};
+
+<FlatList
+  numColumns={2}
+  keyExtractor={(item) => item.id}
+  data={people}
+  renderItem={({ item }) => (
+    <TouchableOpacity onPress={() => pressHandler(item.id)}>
+      <Text style={styles.item}>{item.name}</Text>
+    </TouchableOpacity>
+  )}
+/>;
+```
